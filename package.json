@@ -1,0 +1,33 @@
+{
+  "name": "brackets-sass-lint",
+  "version": "0.0.1",
+  "description": "Brackets extension for pure Node.js Sass linting",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha --reporter=spec test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petetnt/brackets-sass-lint.git"
+  },
+  "keywords": [
+    "sass",
+    "scss",
+    "lint",
+    "node",
+    "brackets"
+  ],
+  "author": "Pete Nykänen <pete.a.nykanen@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/petetnt/brackets-sass-lint/issues"
+  },
+  "homepage": "https://github.com/petetnt/brackets-sass-lint#readme",
+  "dependencies": {
+    "glob": "^6.0.3",
+    "sass-lint": "^1.4.0"
+  },
+  "engines": {
+    "brackets": ">=1.4.0"
+  }
+}

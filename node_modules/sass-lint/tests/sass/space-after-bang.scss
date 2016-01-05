@@ -1,0 +1,27 @@
+// Important
+
+.foo {
+  color: orange !important;
+}
+
+.bar {
+  color: orange ! important;
+}
+
+.baz {
+  color: orange!important;
+}
+
+.qux {
+  color: orange! important;
+}
+
+// Default
+
+$foo: red!default;
+
+$foo: red !default;
+
+$foo: red! default;
+
+$foo: red ! default;

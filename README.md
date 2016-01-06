@@ -36,7 +36,7 @@ To override these defaults, create file called `.sass-lint.yml` on your project 
 
 ## Todo
 
-[ ] Finish writing the unit tests under `unittests.js`
+ - [ ] Finish writing the unit tests under `unittests.js`
 
 ## Versions
 

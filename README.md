@@ -48,6 +48,10 @@ To override these defaults, create file called `.sass-lint.yml` on your project 
 
 Contributions are welcome! Send a PR or submit an issue! Make sure your changes pass ESLint and create new unit tests if needed.
 
+## Releasing as a zip file
+
+Generate the `petetnt.brackets-sass-lint` zip file by bumping up the version number in `package.json`, committing your changes and running `npm run release`. You can then find the new zip file under `release/`.
+
 ## License
 
 MIT

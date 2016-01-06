@@ -18,17 +18,17 @@
      */
     function _lintFile(text, fullPath, fileExt, projectRoot, callback) {
         var configFilePath = projectRoot + CONFIG_FILE_NAME;
-        console.log(fileExt);
+
         try {
             var results = sassLint.lintText({
                 text: text,
                 format: fileExt,
                 filename: fullPath
             }, {}, configFilePath);
-            console.log(results);
+
             return callback(null, results);
         } catch (err) {
-            callback(err);
+            return callback(err);
         }
     }
 

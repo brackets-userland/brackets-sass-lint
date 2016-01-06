@@ -10,42 +10,78 @@ define(function (require, exports, module) {
 
     var SASS_LANGUAGE = LanguageManager.getLanguageForExtension('sass');
     var SCSS_LANGUAGE = LanguageManager.getLanguageForExtension('scss');
-    var LINTER_NAME = 'SASSLint';
+    var LINTER_NAME = 'Sass-Lint';
+    var DOMAIN_NAME = 'petetnt.brackets-sass-lint';
+    var TYPES = {
+        "0": CodeInspection.Type.META,
+        "1": CodeInspection.Type.WARNING,
+        "2": CodeInspection.Type.ERROR
+    };
 
-    var domainName = 'petetnt.brackets-sass-lint';
-    var nodeDomain = new NodeDomain(domainName, ExtensionUtils.getModulePath(module, 'domain'));
+    var nodeDomain = new NodeDomain(DOMAIN_NAME, ExtensionUtils.getModulePath(module, 'domain'));
 
     /**
-     * Lints the given file syncronously
-     * @param   {string}     text     - Given text
-     * @param   {string}     fullPath - Full path to the file
-     * @returns {$.Deferred} deferred - jQuery deferred promise
+     * Parses errors and warnings from results to CodeInspection formatted array
+     * @param   {object} results - Results object
+     * @returns {Array}  errorsAndWarnings - Array containing CodeInspection formatted errors and warnings
      */
-    function handleLintASync(text, fullPath) {
+    function _parseErrorsAndWarnings(results) {
+        var messages = results.messages;
+        var errorsAndWarnings = [];
+
+        messages.forEach(function (message) {
+            var formattedObject = {
+                pos: {
+                    line: message.line - 1,
+                    ch: message.column - 1
+                },
+                message: message.message + ". [" + message.ruleId + "]",
+                type: TYPES[message.severity]
+            };
+
+            errorsAndWarnings.push(formattedObject);
+        });
+
+        return errorsAndWarnings;
+    }
+
+    /**
+     * @private
+     * Lints the given file syncronously
+     * @param   {string}     text     - Text of the given file
+     * @param   {string}     fullPath - Full path to the file
+     * @returns {$.Deferred} deferred - jQuery deferred promise which resolves to CodeInspection formatted array or error
+     */
+    function _handleLintASync(text, fullPath) {
         var deferred = new $.Deferred();
         var projectRoot = ProjectManager.getProjectRoot().fullPath;
         var fileName = FileUtils.getFilenameWithoutExtension(fullPath);
-        var fileExt = FileUtils.getFileExtension (fullPath);
+        var fileExt = FileUtils.getFileExtension(fullPath);
 
+        // Execute linting in Node domain
         nodeDomain.exec('lintFile', text, fullPath, fileExt, projectRoot)
-            .then(function (result) {
-            console.log(result);
-            return deferred.resolve(result);
+            .then(function (results) {
+            return deferred.resolve({errors: _parseErrorsAndWarnings(results)});
         }, function (err) {
-            console.error(err);
             deferred.reject(err);
         });
 
         return deferred.promise();
     }
 
+    // Register linter for Sass
     CodeInspection.register(SASS_LANGUAGE.getId(), {
         name: LINTER_NAME,
-        scanFileAsync: handleLintASync
+        scanFileAsync: _handleLintASync
     });
 
+    // Register linter for Scss
     CodeInspection.register(SCSS_LANGUAGE.getId(), {
         name: LINTER_NAME,
-        scanFileAsync: handleLintASync
+        scanFileAsync: _handleLintASync
     });
+
+    // For unit testing
+    exports._handleLintASync = _handleLintASync;
+    exports._parseErrorsAndWarnings = _parseErrorsAndWarnings;
 });

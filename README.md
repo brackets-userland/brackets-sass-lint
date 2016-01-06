@@ -1,6 +1,7 @@
 # Brackets Sass Lint
 
 Brackets extension for pure Node.js linting of `sass` and `scss` syntaxed files, powered by [Sass-Lint](https://github.com/sasstools/sass-lint).
+No external dependencies needed!
 
 ## Installation
 
@@ -27,10 +28,26 @@ Or you can just clone the repo to `%Brackets Extension Folder%/user/` with
 git clone https://github.com/petetnt/brackets-sass-lint
 ```
 
+## Rules
+
+By default, the linter uses built-in default, similar to those set in this projects `.sass-lint.yml`.
+
+To override these defaults, create file called `.sass-lint.yml` on your project root. You can use [this sample config](https://github.com/sasstools/sass-lint/blob/develop/docs/sass-lint.yml) as the base for your own configurations.
+
+## Todo
+
+[ ] Finish writing the unit tests under `unittests.js`
+
+## Versions
+
+- 0.0.1
+  - First release!
+  - Lint your SASS and SCSS files with ease!
+
 ## Contributing
 
-Contributions are welcome! Send a PR or submit an issue!
+Contributions are welcome! Send a PR or submit an issue! Make sure your changes pass ESLint and create new unit tests if needed.
 
-## License 
+## License
 
 MIT

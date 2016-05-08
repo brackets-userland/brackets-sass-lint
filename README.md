@@ -51,6 +51,10 @@ To override these defaults, create file called `.sass-lint.yml` on your project 
 
 ## Versions
 
+- 1.0.0
+  - Version bump
+  - Update `sass-lint` to 1.7.0
+
 - 0.0.2
   - Release on `brackets-npm-registry` because of on-going issue with the `brackets-registry`
 

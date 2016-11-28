@@ -1,5 +1,187 @@
 # Sass Lint Changelog
 
+## v1.10.2
+
+**November 9th, 2016**
+
+**Changes**
+* Reverted back to ESlint v2.x to prevent a breaking change in Node < v4
+
+**Fixes**
+* Fixed an exception for partial idents in `space-around-operator` [#940](https://github.com/sasstools/sass-lint/pull/940)
+* Fixed an issue with negative numbers in `space-around-operator` [#945](https://github.com/sasstools/sass-lint/pull/945)
+
+
+## v1.10.1
+
+**November 7th, 2016**
+
+**Fixes**
+
+* Fixed an issue with the `--no-exit` `-q` flag not being respected and unhandled errors/exceptions being thrown by the CLI
+* Fixed an issue with variable declarations showing as properties in the `no-duplicate-properties` rule [#937](https://github.com/sasstools/sass-lint/pull/936)
+* Fixed an issue with variable declarations showing as properties in the `declarations-before-nesting` rule [#937](https://github.com/sasstools/sass-lint/pull/936)
+
+## v1.10.0
+
+**November 6th, 2016**
+
+The 'you can ignore those bad habits again' update
+
+** :tada: DISABLE LINTERS :tada: **
+The ability to enable and disable linters on the fly has finally(!) been added [#677](https://github.com/sasstools/sass-lint/pull/677) [docs](https://github.com/sasstools/sass-lint/blob/master/docs/toggle-rules-in-src.md)
+
+A massive thank you to everyone who commented/contributed/reported and tested this feature this was very much a community effort here. An extra special thank you to
+* [@donabrams](https://github.com/donabrams)
+
+For his initial hard work in getting this off the ground. There were lots of others who have fixed everything from test issues to AST issues to make this possible afterwards, so thanks to you too!
+
+**New Features**
+* `max-warnings` which is available with the sass-lint CLI is now available as an option in your config file too [#857](https://github.com/sasstools/sass-lint/pull/857)
+* **New Rule** `no-url-domains` rule [#846](https://github.com/sasstools/sass-lint/pull/846) [docs](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-url-domains.md)
+* **New Rule** `max-line-length` rule was added [#840](https://github.com/sasstools/sass-lint/pull/840) [docs](https://github.com/sasstools/sass-lint/blob/master/docs/rules/max-line-length.md)
+* **New Rule** `max-file-line-count` rule was added [#842](https://github.com/sasstools/sass-lint/pull/842) [docs](https://github.com/sasstools/sass-lint/blob/master/docs/rules/max-file-line-count.md)
+* **New Rule** `declarations-before-nesting` rule was added [#866](https://github.com/sasstools/sass-lint/pull/866) [docs](https://github.com/sasstools/sass-lint/blob/master/docs/rules/declarations-before-nesting.md)
+
+**Fixes**
+* Fixed an issue with an un handled error being thrown in certain circumstances for the `space-before-colon` rule [#894](https://github.com/sasstools/sass-lint/pull/894)
+* Operators in variable names are now handled correctly for the `variable-name-format` rule [#903](https://github.com/sasstools/sass-lint/pull/903)
+* Fixed an issue with string values in the `shorthand-values` rule [#848](https://github.com/sasstools/sass-lint/pull/848)
+* Fixed an issue with valid strict BEM producing an error in the `*-name-format` rules [#892](https://github.com/sasstools/sass-lint/pull/892)
+* Fixed an issue with non-string user conventions in the `border-zero` rule [#913](https://github.com/sasstools/sass-lint/pull/913)
+* Fixed an issue where BOM markers in files were causing parse errors or random errors/warnings [#893](https://github.com/sasstools/sass-lint/pull/893)
+* Fixed an issue with interpolates properties in the `no-duplicate-properties` rule [#915](https://github.com/sasstools/sass-lint/pull/915)
+* Fixed a possible error with invalid user conventions in the `border-zero` rule [#926](https://github.com/sasstools/sass-lint/pull/926)
+
+**Changes**
+* Node 0.10 and 0.12 are no longer officially supported by sass-lint. We've not deliberately broken these builds but we will no longer be testing against them either [#896](https://github.com/sasstools/sass-lint/issues/896) & [#924](https://github.com/sasstools/sass-lint/pull/924)
+* In future the `no-url-protocols` rule will not lint domains in URL's for now a new flag is added to mimic this behaviour. The new `no-url-domains` rule can be used instead [#813](https://github.com/sasstools/sass-lint/issues/813)
+* Front matter such as those present in Jekyll templates will now be ignored in all files before passing to the AST / Linting [897](https://github.com/sasstools/sass-lint/pull/897)
+* Running the tests no longer required sass-lint development to be `npm-link`ed or globally installed. [#911](https://github.com/sasstools/sass-lint/pull/911)
+* The concentric property list in `property-sort-order` was updated to reflect the latest release [#922](https://github.com/sasstools/sass-lint/pull/922)
+
+**Updates**
+* AST fixes have arrived with version 3.4.7 of gonzales-pe [#906](https://github.com/sasstools/sass-lint/pull/906)
+* Updated to the latest versions of many other packages
+
+**Documentation**
+* The documentation around configuring a rule was tidied up and made clearer [#910](https://github.com/sasstools/sass-lint/pull/910)
+
+**Special thanks to**
+
+* [bgriffith](https://github.com/bgriffith)
+* [donabrams](https://github.com/donabrams)
+* [danpurdy](https://github.com/DanPurdy)
+* [danwaz](https://github.com/danwaz)
+* [lucasjahn](https://github.com/lucasjahn)
+* [mrjamesriley](https://github.com/mrjamesriley)
+* [notrobin](https://github.com/nottrobin)
+* [onishiweb](https://github.com/onishiweb)
+* [richarddewit](https://github.com/richarddewit)
+
+## v1.9.1
+
+**August 25, 2016**
+
+**Fixes**
+* Fixed an issue with nth selectors in the `no-mergeable-selectors` rule [#834](https://github.com/sasstools/sass-lint/issues/834)
+* Fixed an issue with atrule arguments containing functions in the `no-mergeable-selectors` rule [#826](https://github.com/sasstools/sass-lint/issues/826)
+* Fixed an issue with hex colors being ignored in the `shorthand-values` rule [#836](https://github.com/sasstools/sass-lint/pull/836)
+
+## v1.9.0
+
+**August 18, 2016**
+
+**Fixes**
+* Fixed an issue with the indentation rule when it encountered at-rules with no block immediately preceding a map [#779](https://github.com/sasstools/sass-lint/issues/779) [#783](https://github.com/sasstools/sass-lint/issues/783)
+* Fixed an issue in `single-lint-per-selector` where inline comments were seen as selectors [#789](https://github.com/sasstools/sass-lint/issues/789)
+* Fixed an issue with interpolation in placeholders within the `bem-depth` rule [#782](https://github.com/sasstools/sass-lint/issues/782)
+* Removed duplicated code from `no-mergeable-selectors` to helper methods
+
+**Documentation**
+* Fixed typos in no-vendor-prefixes rule documentation [#787](https://github.com/sasstools/sass-lint/issues/787)
+* Added link to Visual Studio extension [#815](https://github.com/sasstools/sass-lint/pull/815)
+
+**New Rules**
+* Added the `no-color-hex` rule to disallow all hexadecimal colour definitions [#754](https://github.com/sasstools/sass-lint/issues/754)
+
+**Updates**
+* Gonzales-pe updated to version 3.4.4 which fixes a lot of longstanding issues see the [Changelog](https://github.com/tonyganch/gonzales-pe/blob/dev/CHANGELOG.md)
+
+## v1.8.2
+
+**June 23, 2016**
+
+Unfortunately it seems a reversion snuck into gonzales-pe's latest version so we're pinning it back where it was until it's fixed. Sorry..
+
+## v1.8.1
+
+**June 23, 2016**
+
+Parser patching
+
+Gonzales-pe had a few important updates so we chose to do a patch release to make sure everyone gets to benefit from less parse errors as soon as possible!
+
+**Fixes**
+* Fixed an issue in `shorthand-values` where values within parenthesis would be ignored [#748](https://github.com/sasstools/sass-lint/issues/748)
+* Corrected the documentation for `property-units` [#740](https://github.com/sasstools/sass-lint/issues/740)
+* Fixed an issue where config files were not being recursively searched for [#756](https://github.com/sasstools/sass-lint/issues/756)
+
+**Updates**
+* Gonzales-pe updated to version 3.3.5 [see changelog](https://github.com/tonyganch/gonzales-pe/blob/v3.3.5/CHANGELOG.md#21062016-version-335) [#746](https://github.com/sasstools/sass-lint/pull/746)
+
+## v1.8.0
+
+**June 17, 2016**
+
+We're gonna need a bigger boat
+
+**Indentation**
+
+A lot of work on the indentation rule is present in 1.8 including the following:
+
+* Tabs are now supported and can be used as a valid option in your config [#592](https://github.com/sasstools/sass-lint/issues/592)
+* LF and CRLF are now supported for both spaces and tabs.
+* `.sass` support is now included (Could be a little buggy due to some discrepancies in the AST) [#611](https://github.com/sasstools/sass-lint/issues/611)
+* Mixed spaces and tabs warnings are now correctly informing you if you've specified that you'll use spaces and it detects tabs. [#382](https://github.com/sasstools/sass-lint/issues/382)
+* Indenting of multiline properties in media queries etc is now supported [#426](https://github.com/sasstools/sass-lint/issues/426)
+
+**Fixes**
+* Fixed an issue with interpolated properties in the `shorthand-values` rule [#669](https://github.com/sasstools/sass-lint/issues/669)
+* Corrected the name of the `pseudo-element` rule [#682](https://github.com/sasstools/sass-lint/pull/682)
+* Corrected the name of the `no-empty-rulesets` rule [#684](https://github.com/sasstools/sass-lint/issues/684)
+* Corrected the name of the `no-trailing-zero` rule [#685](https://github.com/sasstools/sass-lint/issues/685)
+* Fixed an issue where partially matching rules affected each others severity levels [#687](https://github.com/sasstools/sass-lint/issues/687)
+* Fixed an issue with nested properties in the `no-misspelled-properties` [#352](https://github.com/sasstools/sass-lint/issues/352)
+* Fixed an issue with interpolated properties in the `no-misspelled-properties` [#679](https://github.com/sasstools/sass-lint/issues/679)
+* Fixed an issue with interpolated selectors in the `no-mergeable-selectors` [#703](https://github.com/sasstools/sass-lint/issues/703)
+* Added the absolute path module to fix an issue with Node 0.10 [#706](https://github.com/sasstools/sass-lint/pull/706)
+* Added a new method and updated gulp-sass-lint to fix an config files and ignored files not working correctly [#452](https://github.com/sasstools/sass-lint/issues/452)
+* Fixed an issue with the `!important` flag raising a lint warning within the `variable-for-property` rule [#714](https://github.com/sasstools/sass-lint/issues/714)
+* Fixed an issue where sass-lint would try to lint a directory with a .scss or .sass extension, now sass-lint will only attempt to lint files :tada: [#719](https://github.com/sasstools/sass-lint/pull/719) & [#555](https://github.com/sasstools/sass-lint/issues/555)
+* Fixed an issue where Sass color functions would raise lint warnings in the `no-color-keywords` rule [#717](https://github.com/sasstools/sass-lint/issues/717)
+* Fixed an unhandled error with the `pseudo-element` rule [#671](https://github.com/sasstools/sass-lint/pull/671)
+
+**Changes**
+* Added flexbox and outline properties to the recess order preset [#666](https://github.com/sasstools/sass-lint/issues/666)
+* Added missing pseudo classes to our pseudo class master list [#675](https://github.com/sasstools/sass-lint/issues/675)
+* Added pascal case format to all name format rules [#678](https://github.com/sasstools/sass-lint/issues/678)
+* Included files in your config file can now be an array similar to the ignored files option [#668](https://github.com/sasstools/sass-lint/issues/668)
+* Added PR and issue templates [#692](https://github.com/sasstools/sass-lint/pulls/692)
+* Now testing on Node v6 [#699](https://github.com/sasstools/sass-lint/issues/699)
+* Added the `ignore-non-standard` option to the `no-vendor-prefixes` rule. This allows you to blanket ignore the vendor prefixes on any non standard properties [#702](https://github.com/sasstools/sass-lint/issues/702)
+* The `url-quotes` rule now highlights the beginning of the detect rather than the end [#712](https://github.com/sasstools/sass-lint/issues/712)
+* All helper tests have been split and rearranged for ease of use when developing [#322](https://github.com/sasstools/sass-lint/pull/322)
+* Moved away from our Gonzales-pe-sl fork back to gonzales-pe as we've made changes to the main AST now [#722](https://github.com/sasstools/sass-lint/pull/722)
+
+**New Rules**
+* Added `pseudo-element` rule to enforce the use of single colons in pseudo classes and double colons in pseudo elements. [#662](https://github.com/sasstools/sass-lint/issues/662)
+* Added `no-universal-selectors` rule to warn against the use of universal selectors (*) [#694](https://github.com/sasstools/sass-lint/issues/694)
+* Added `no-attribute-selectors` rule to warn against the use of attribute selectors [#694](https://github.com/sasstools/sass-lint/issues/694)
+* Added `no-combinators` rule to warn against the use of combinators [#694](https://github.com/sasstools/sass-lint/issues/694)
+* Added `attribute-quotes` rule to enforce the use of the use of quotes in attribute values [#707](https://github.com/sasstools/sass-lint/issues/707)
+* Added `no-disallowed-properties` rule to warn against the use of certain properties. [#546](https://github.com/sasstools/sass-lint/issues/546)
+
 ## v1.7.0
 
 **April 27, 2016**

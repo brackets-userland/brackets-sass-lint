@@ -3,13 +3,20 @@
 //////////////////////////////
 'use strict';
 
-var gonzales = require('gonzales-pe-sl');
+var gonzales = require('gonzales-pe');
+var fm = require('front-matter');
+var helpers = require('./helpers');
 
 module.exports = function (text, syntax, filename) {
   var tree;
 
   // Run `.toString()` to allow Buffers to be passed in
-  text = text.toString();
+  text = helpers.stripBom(text.toString());
+
+  // if we're skipping front matter do it here, fall back to just our text in case it fails
+  if (fm.test(text)) {
+    text = fm(text).body || text;
+  }
 
   try {
     tree = gonzales.parse(text, {

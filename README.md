@@ -53,6 +53,10 @@ To override these defaults, create file called `.sass-lint.yml` on your project 
 
 - 1.0.0
   - Version bump
+  - Updated `sass-lint` to 1.10.0
+
+- 1.0.0
+  - Version bump
   - Update `sass-lint` to 1.7.0
 
 - 0.0.2

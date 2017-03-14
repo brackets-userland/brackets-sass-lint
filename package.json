@@ -1,5 +1,6 @@
 {
     "name": "brackets-sass-lint",
+    "title": "Brackets Sass Lint",
     "version": "1.10.0",
     "description": "Brackets extension for pure Node.js Sass linting",
     "main": "main.js",

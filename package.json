@@ -27,7 +27,7 @@
     },
     "homepage": "https://github.com/petetnt/brackets-sass-lint#readme",
     "dependencies": {
-        "sass-lint": "^1.10.0"
+        "sass-lint": "^1.11.1"
     },
     "engines": {
         "brackets": ">=1.4.0"

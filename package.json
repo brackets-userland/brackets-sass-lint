@@ -1,7 +1,7 @@
 {
     "name": "brackets-sass-lint",
     "title": "Brackets Sass Lint",
-    "version": "1.10.0",
+    "version": "1.11.1",
     "description": "Brackets extension for pure Node.js Sass linting",
     "main": "main.js",
     "scripts": {
@@ -27,7 +27,7 @@
     },
     "homepage": "https://github.com/petetnt/brackets-sass-lint#readme",
     "dependencies": {
-        "sass-lint": "^1.10.0"
+        "sass-lint": "^1.11.1"
     },
     "engines": {
         "brackets": ">=1.4.0"

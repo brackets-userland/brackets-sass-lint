@@ -5,17 +5,6 @@ No external dependencies needed!
 
 ## Installation
 
-[Due to an issue with `brackets-registry`](https://github.com/adobe/brackets/issues/7387), this package is only 
-available on [`brackets-npm-registry`](https://github.com/zaggino/brackets-npm-registry). 
-
-To install it, follow the following steps:
-
-1. Install `brackets-npm-registry`
-2. Click the `npm`-button on your taskbar
-3. Install `brackets-sass-lint`.
-
-### When the issue is fixed...
-
 You can always find the latest version of `brackets-sass-lint` from the Brackets Extension Manager.
 
 1. Open Brackets
@@ -39,6 +28,14 @@ Or you can just clone the repo to `%Brackets Extension Folder%/user/` with
 git clone https://github.com/petetnt/brackets-sass-lint
 ```
 
+The package is also available on [`brackets-npm-registry`](https://github.com/zaggino/brackets-npm-registry). 
+
+To install it, follow the following steps:
+
+1. Install `brackets-npm-registry`
+2. Click the `npm`-button on your taskbar
+3. Install `brackets-sass-lint`.
+
 ## Rules
 
 By default, the linter uses built-in default, similar to those set in this projects `.sass-lint.yml`.
@@ -50,6 +47,10 @@ To override these defaults, create file called `.sass-lint.yml` on your project 
  - [ ] Finish writing the unit tests under `unittests.js`
 
 ## Versions
+
+- 1.11.1
+  - Version bump
+  - Updated `sass-lint` to 1.10.0
 
 - 1.10.0
   - Version bump

@@ -1,4 +1,5 @@
 # Brackets Sass Lint
+[![Downloads](https://badges.ml/brackets-sass-lint/total.svg)](https://brackets-extension-badges.github.io#brackets-sass-lint) [![Downloads](https://badges.ml/brackets-sass-lint/last-version.svg)](https://brackets-extension-badges.github.io#brackets-sass-lint)
 
 Brackets extension for pure Node.js linting of `sass` and `scss` syntaxed files, powered by [Sass-Lint](https://github.com/sasstools/sass-lint).
 No external dependencies needed!
